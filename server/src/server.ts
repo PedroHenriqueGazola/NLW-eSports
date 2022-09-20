@@ -15,20 +15,19 @@ const prisma = new PrismaClient({
     log: ['query']
 })
 
-app.get('/games', async (req, res) => {
+app.get('/games', async (request, response) => {
     const games = await prisma.game.findMany({
-        include: {
-            _count: {
-                select: {
-                    Ads: true
-                }
-            }
+      include: {
+        _count: {
+          select: {
+            Ads: true,
+          }
         }
-    })
-
-    return res.json(games)
-})
-
+      }
+    });
+  
+    return response.json(games);
+  });
 app.post('/games/:id/ads', async(req, res)=> {
 
     const gameId:any = req.params.id
