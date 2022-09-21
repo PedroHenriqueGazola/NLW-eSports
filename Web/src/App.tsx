@@ -15,7 +15,7 @@ interface Game {
   title: string;
   bannerUrl: string;
   _count: {
-    ads: number;
+    Ads: number;
   }
 }
 
@@ -23,7 +23,7 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios('http://localhost:3000/games')
+    axios('http://54.232.42.212:3000/games')
     .then(response => {
       setGames(response.data);
     });
@@ -44,7 +44,7 @@ function App() {
               key={game.id}
               title={game.title}
               BannerUrl={game.bannerUrl}
-              adsCount={game._count.ads}
+              adsCount={game._count.Ads}
             />
           )
         })}
